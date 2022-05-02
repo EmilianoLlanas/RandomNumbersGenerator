@@ -1,17 +1,25 @@
+import random
+import math
+import numpy as np
 
 def generaAleatorios(generador,listaGenerador,funcion,listaFuncion,N,M):
     numerosGenerados=[]
     if funcion == "uniforme":
-        numerosGenerados.append(uniforme(listaFuncion))
+        for _ in range(N):
+            numerosGenerados.append(uniforme(listaFuncion))
     if funcion == "exponencial":
-        numerosGenerados.append(exponencial(listaFuncion))
+        for _ in range(N):
+            numerosGenerados.append(exponencial(listaFuncion))
     if funcion == "normal":
-        numerosGenerados.append(normal(listaFuncion))
+        for _ in range(N):
+            numerosGenerados.append(normal(listaFuncion))
     if funcion == "poisson":
-        numerosGenerados.append(poisson(listaFuncion))
+        for _ in range(N):
+            numerosGenerados.append(poisson(listaFuncion))
     if funcion == "binomial":
-        numerosGenerados.append(binomial(listaFuncion))
-    
+        for _ in range(N):
+            numerosGenerados.append(binomial(listaFuncion))
+
     histograma(M,numerosGenerados)
     return numerosGenerados
 
@@ -25,17 +33,46 @@ def exponencial(listaFuncion):
     pass
 
 def normal(listaFuncion):
-    #TODO
-    pass
+    m=listaFuncion[1]
+    sd=listaFuncion[0]
+    u=0
+    v=0
+
+    u=random.uniform(0,1)
+    v=random.uniform(0,1)
+    x=math.sqrt( -2.0 * math.log( u ) ) * math.cos( 2.0 * math.pi * v )
+    return x*sd-(-1*m)
 
 def poisson(listaFuncion):
-    #TODO
-    pass
+    n=0
+    p=1
+    r=0
+    limit=math.e**-listaFuncion[0]
+    while True:
+        r=random.uniform(0,1)
+        p=p*r
+        if p<limit:
+            return n
+        else:
+            n+=1
 
 def binomial(listaFuncion):
-    #TODO
+    n=listaFuncion[1]
+    p=listaFuncion[0]
+    m=int((n+1)*p)
+    while True:
+        k=int(random.uniform(0,1)*n)
+        x=np.math.factorial(n)/(np.math.factorial(k)*np.math.factorial(n-k))*(p**k)*((1-p)**(n-k))
+        x=x/m
+        r=random.uniform(0,1)
+        if r < x:
+            return k
     pass
 
 def histograma(M,numerosGenerados):
     #TODO
     pass
+
+print(generaAleatorios(None, None, 'poisson',[725], 500, 10))
+print(generaAleatorios(None, None, 'binomial',[0.5,25], 500, 10))
+print(generaAleatorios(None, None, 'normal',[10,0.5], 500, 10))
