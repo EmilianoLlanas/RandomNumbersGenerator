@@ -10,7 +10,7 @@ def generaAleatorios(generador,listaGenerador,funcion,listaFuncion,N,M):
     numerosaleatorios=[]
     numerosGenerados=[]
     if generador=="mixto":
-       
+
         x0=listaGenerador[0]
         a=listaGenerador[1]
         c=listaGenerador[2]
@@ -42,11 +42,6 @@ def generaAleatorios(generador,listaGenerador,funcion,listaFuncion,N,M):
     histograma(M,numerosGenerados)
     return numerosGenerados
 
-
-    
-
-
-
 def uniforme(listaFuncion):
     #TODO
     pass
@@ -61,8 +56,9 @@ def normal(listaFuncion):
     u=0
     v=0
 
-    u=random.uniform(0,1)
-    v=random.uniform(0,1)
+    u=generadores()
+    v=generadores()
+    print(u)
     x=math.sqrt( -2.0 * math.log( u ) ) * math.cos( 2.0 * math.pi * v )
     return x*sd-(-1*m)
 
@@ -72,7 +68,7 @@ def poisson(listaFuncion):
     r=0
     limit=math.e**-listaFuncion[0]
     while True:
-        r=random.uniform(0,1)
+        r=generadores()
         p=p*r
         if p<limit:
             return n
@@ -84,10 +80,10 @@ def binomial(listaFuncion):
     p=listaFuncion[0]
     m=int((n+1)*p)
     while True:
-        k=int(random.uniform(0,1)*n)
+        k=int(generadores()*n)
         x=np.math.factorial(n)/(np.math.factorial(k)*np.math.factorial(n-k))*(p**k)*((1-p)**(n-k))
         x=x/m
-        r=random.uniform(0,1)
+        r=generadores()
         if r < x:
             return k
 
@@ -111,4 +107,4 @@ def generadores():
 
 #print(generaAleatorios(None, None, 'poisson',[725], 500, 10))
 #print(generaAleatorios(None, None, 'binomial',[0.5,25], 500, 10))
-#print(generaAleatorios(None, None, 'normal',[10,0.5], 500, 10))
+#print(generaAleatorios("multiplicativo",[1543,345,604], 'normal',[10,0.5], 500, 10))
