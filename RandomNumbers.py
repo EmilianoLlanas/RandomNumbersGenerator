@@ -3,30 +3,25 @@ import math
 import string
 import numpy as np
 
-global x0,a,c,m,xn,numerosaleatorios
+
 def generaAleatorios(generador,listaGenerador,funcion,listaFuncion,N,M):
+    global numerosaleatorios
+    global x0,a,c,m,xn
     numerosaleatorios=[]
     numerosGenerados=[]
     if generador=="mixto":
+       
         x0=listaGenerador[0]
         a=listaGenerador[1]
         c=listaGenerador[2]
         m=listaGenerador[3]
         xn=x0
-        for i in range (N):
-           xn= (((a*xn)+c) % m)
-           print(str(xn/m))
-           numerosaleatorios.append((xn/m))
 
     if generador=="multiplicativo":
         x0=listaGenerador[0]
         a=listaGenerador[1]
         m=listaGenerador[2]
         xn=x0
-        for i in range (N):
-           xn= ((a*xn) % m)
-           print(str(xn/m))
-           numerosaleatorios.append((xn/m))
 
     if funcion == "uniforme":
         for _ in range(N):
@@ -95,12 +90,22 @@ def binomial(listaFuncion):
         r=random.uniform(0,1)
         if r < x:
             return k
-    
 
 def histograma(M,numerosGenerados):
     #TODO
     pass
 
+def generadores(tipo):
+    global xn
+    if tipo=="mixto":
+        xn= (((a*xn)+c) % m)
+        print(str(xn/m))
+        return xn/m
+
+    if tipo=="multiplicativo":
+        xn= ((a*xn) % m)
+        print(str(xn/m))
+        return xn/m
 
 #listaGenerador[x0,a,c,m]
 generaAleatorios("multiplicativo",[15,35,64],None,None,20,10)
