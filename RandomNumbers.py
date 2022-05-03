@@ -5,8 +5,8 @@ import numpy as np
 
 
 def generaAleatorios(generador,listaGenerador,funcion,listaFuncion,N,M):
-    global numerosaleatorios
-    global x0,a,c,m,xn
+    global x0,a,c,m,xn,numerosaleatorios,tipo
+    tipo=generador
     numerosaleatorios=[]
     numerosGenerados=[]
     if generador=="mixto":
@@ -95,20 +95,18 @@ def histograma(M,numerosGenerados):
     #TODO
     pass
 
-def generadores(tipo):
+def generadores():
     global xn
     if tipo=="mixto":
         xn= (((a*xn)+c) % m)
-        print(str(xn/m))
         return xn/m
 
     if tipo=="multiplicativo":
         xn= ((a*xn) % m)
-        print(str(xn/m))
         return xn/m
 
 #listaGenerador[x0,a,c,m]
-generaAleatorios("multiplicativo",[15,35,64],None,None,20,10)
+#generaAleatorios("multiplicativo",[15,35,64],None,None,20,10)
 
 
 #print(generaAleatorios(None, None, 'poisson',[725], 500, 10))
