@@ -40,7 +40,6 @@ def generaAleatorios(generador,listaGenerador,funcion,listaFuncion,N,M):
     return numerosGenerados
 
 def uniforme(listaFuncion):
-    #TODO
     a=listaFuncion[0]
     b=listaFuncion[1]
     x=generadores()
@@ -54,7 +53,6 @@ def exponencial(listaFuncion):
     m=listaFuncion[1]
     random=generadores()
     exp=(-1/m)*math.log(random)
-    #print(str(round(exp, 4))+",")
     return exp
 
 def normal(listaFuncion):
@@ -108,14 +106,4 @@ def generadores():
         xn= ((a*xn) % m)
         return xn/m
 
-#listaGenerador[x0,a,c,m]
 
-#generaAleatorios("multiplicativo",[10,611,97],"uniforme",[3,7],100,10)
-#generaAleatorios("multiplicativo",[10,611,97],"exponencial",[3,18],100,10)
-#generaAleatorios("multiplicativo",[10,611,97],"poisson",[725],500,100)
-#generaAleatorios("multiplicativo",[10,611,97],"binomial",[0.5,25],500,10)
-#generaAleatorios("multiplicativo",[1543,345,604],"normal",[10,0.5],500,10)
-
-#print(generaAleatorios(None, None, 'poisson',[725], 500, 10))
-#print(generaAleatorios(None, None, 'binomial',[0.5,25], 500, 10))
-#print(generaAleatorios("multiplicativo",[1543,345,604], 'normal',[10,0.5], 500, 10))
