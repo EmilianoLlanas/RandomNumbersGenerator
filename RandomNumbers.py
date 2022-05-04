@@ -95,7 +95,7 @@ def binomial(listaFuncion):
             return k
 
 def histograma(M,numerosGenerados):
-    plt.hist(numerosGenerados)
+    plt.hist(numerosGenerados,M)
     plt.show() 
 
 def generadores():
@@ -110,9 +110,11 @@ def generadores():
 
 #listaGenerador[x0,a,c,m]
 
-# generaAleatorios("multiplicativo",[10,611,97],"uniforme",[3,7],100,10)
+#generaAleatorios("multiplicativo",[10,611,97],"uniforme",[3,7],100,10)
 #generaAleatorios("multiplicativo",[10,611,97],"exponencial",[3,18],100,10)
-
+#generaAleatorios("multiplicativo",[10,611,97],"poisson",[725],500,100)
+#generaAleatorios("multiplicativo",[10,611,97],"binomial",[0.5,25],500,10)
+#generaAleatorios("multiplicativo",[1543,345,604],"normal",[10,0.5],500,10)
 
 #print(generaAleatorios(None, None, 'poisson',[725], 500, 10))
 #print(generaAleatorios(None, None, 'binomial',[0.5,25], 500, 10))
