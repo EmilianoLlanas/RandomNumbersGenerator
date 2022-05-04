@@ -44,7 +44,12 @@ def generaAleatorios(generador,listaGenerador,funcion,listaFuncion,N,M):
 
 def uniforme(listaFuncion):
     #TODO
-    pass
+    a=listaFuncion[0]
+    b=listaFuncion[1]
+    x=generadores()
+
+    return(x*(b-a))+a
+
 
 def exponencial(listaFuncion):
     #TODO
@@ -102,7 +107,7 @@ def generadores():
         return xn/m
 
 #listaGenerador[x0,a,c,m]
-#generaAleatorios("multiplicativo",[15,35,64],None,None,20,10)
+generaAleatorios("multiplicativo",[15,35,64],"uniforme",[3,7],20,10)
 
 
 #print(generaAleatorios(None, None, 'poisson',[725], 500, 10))
