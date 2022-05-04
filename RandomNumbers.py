@@ -1,13 +1,10 @@
-import random
 import math
-import string
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 def generaAleatorios(generador,listaGenerador,funcion,listaFuncion,N,M):
-    global x0,a,c,m,xn,numerosaleatorios,tipo
+    global x0,a,c,m,xn,numerosGenerados,tipo
     tipo=generador
-    numerosaleatorios=[]
     numerosGenerados=[]
     if generador=="mixto":
 
@@ -53,7 +50,12 @@ def uniforme(listaFuncion):
 
 def exponencial(listaFuncion):
     #TODO
-    pass
+    x=listaFuncion[0]
+    m=listaFuncion[1]
+    random=generadores()
+    exp=(-1/m)*math.log(random)
+    #print(str(round(exp, 4))+",")
+    return exp
 
 def normal(listaFuncion):
     m=listaFuncion[1]
@@ -93,8 +95,8 @@ def binomial(listaFuncion):
             return k
 
 def histograma(M,numerosGenerados):
-    #TODO
-    pass
+    plt.hist(numerosGenerados)
+    plt.show() 
 
 def generadores():
     global xn
@@ -107,7 +109,9 @@ def generadores():
         return xn/m
 
 #listaGenerador[x0,a,c,m]
-generaAleatorios("multiplicativo",[15,35,64],"uniforme",[3,7],20,10)
+
+# generaAleatorios("multiplicativo",[10,611,97],"uniforme",[3,7],100,10)
+#generaAleatorios("multiplicativo",[10,611,97],"exponencial",[3,18],100,10)
 
 
 #print(generaAleatorios(None, None, 'poisson',[725], 500, 10))
