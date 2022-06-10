@@ -94,7 +94,7 @@ def binomial(listaFuncion):
 
 def histograma(M,numerosGenerados):
     plt.hist(numerosGenerados,M)
-    plt.show() 
+    plt.show()
 
 def generadores():
     global xn
@@ -105,5 +105,3 @@ def generadores():
     if tipo=="multiplicativo":
         xn= ((a*xn) % m)
         return xn/m
-
-
